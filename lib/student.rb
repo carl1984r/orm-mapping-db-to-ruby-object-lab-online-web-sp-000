@@ -31,13 +31,13 @@ class Student
     # return a new instance of the Student class
   end
 
-  def self.all_students_in_grade_9(gra)
+  def self.all_students_in_grade_9
     binding.pry
     sql = <<-SQL
-      SELECT * FROM students WHERE grade = ? LIMIT 1
+      SELECT * FROM students WHERE grade = 9 LIMIT 1
     SQL
 
-    DB[:conn].execute(sql, gra).map {|data_base_row| self.new_from_db(data_base_row)}[0]
+    DB[:conn].execute(sql).map {|data_base_row| self.new_from_db(data_base_row)}[0]
     # find the student in the database given a name
     # return a new instance of the Student class
   end
