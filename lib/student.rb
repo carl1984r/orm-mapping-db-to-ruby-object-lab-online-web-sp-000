@@ -8,8 +8,6 @@ class Student
     stu.name = row[1]
     stu.grade = row[2]
     stu
-    binding.pry
-    # create a new Student object given a row from the database
   end
 
   def self.all
