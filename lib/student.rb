@@ -27,7 +27,17 @@ class Student
     SQL
 
     DB[:conn].execute(sql, name).map {|data_base_row| self.new_from_db(data_base_row)}[0]
+    # find the student in the database given a name
+    # return a new instance of the Student class
+  end
+
+  def self.all_students_in_grade_9(gra)
     binding.pry
+    sql = <<-SQL
+      SELECT * FROM students WHERE grade = ? LIMIT 1
+    SQL
+
+    DB[:conn].execute(sql, gra).map {|data_base_row| self.new_from_db(data_base_row)}[0]
     # find the student in the database given a name
     # return a new instance of the Student class
   end
